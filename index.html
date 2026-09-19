@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#050816">
+<meta name="theme-color" content="#050816">      
 
 <meta name="description"
       content="Mohammed Ammar — Cloud, DevOps & Data Engineer specializing in Azure, Kubernetes, Terraform, Data Engineering and AI Platform Engineering.">
@@ -1159,154 +1159,120 @@ nav {
 ========================================================= */
 
 .about-terminal {
-
-    border:
-        1px solid
-        var(--line);
-
+    height: 390px;
+    min-height: 390px;
+    max-height: 390px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(148, 163, 184, 0.14);
     border-radius: 22px;
-
     overflow: hidden;
-
-    background: #070b17;
-
-    box-shadow:
-        var(--shadow);
+    background: linear-gradient(145deg, #080d1c, #050914);
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.42);
 }
-
 
 .terminal-bar {
-
+    flex: 0 0 46px;
+    height: 46px;
     display: flex;
-
     align-items: center;
-
     gap: 7px;
-
-    padding:
-        13px
-        15px;
-
-    border-bottom:
-        1px solid
-        var(--line);
+    padding: 0 15px;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.11);
+    background: rgba(255,255,255,0.018);
+    position: relative;
 }
 
-
 .terminal-dot {
-
     width: 9px;
     height: 9px;
-
     border-radius: 50%;
-
     background: #475569;
 }
 
+.terminal-dot:nth-child(1) { background: #fb7185; }
+.terminal-dot:nth-child(2) { background: #fbbf24; }
+.terminal-dot:nth-child(3) { background: #34d399; }
 
 .terminal-title {
-
-    margin-left: auto;
-
-    margin-right: auto;
-
-    font:
-        10px
-        "JetBrains Mono";
-
-    color: #52637f;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font: 10px "JetBrains Mono", monospace;
+    color: #53637c;
 }
-
 
 .terminal-body {
-
-    padding: 24px;
-
-    font:
-        12px/2
-        "JetBrains Mono";
-
-    color: #9fb1cb;
-
-    min-height: 350px;
-
-    white-space: pre-wrap;
-
+    position: relative;
+    flex: 1;
+    min-height: 0;
+    padding: 20px 22px;
     overflow: hidden;
+    font: 11.5px/1.75 "JetBrains Mono", monospace;
+    color: #91a4bf;
+    background:
+        radial-gradient(circle at 80% 20%, rgba(56,189,248,0.045), transparent 35%),
+        #060a15;
 }
 
+.terminal-body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px);
+    background-size: 100% 28px;
+    opacity: 0.35;
+}
+
+.terminal-screen {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 2px;
+}
 
 .terminal-line {
-
-    min-height: 24px;
-
-    transition:
-        opacity 0.25s;
+    flex: 0 0 auto;
+    min-height: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: terminalLineIn 0.18s ease-out;
 }
 
+@keyframes terminalLineIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
 .terminal-prompt {
-
-    color: var(--green);
+    color: #34d399;
+    font-weight: 600;
 }
 
-
-.terminal-command {
-
-    color: #dbeafe;
-}
-
-
-.terminal-output {
-
-    color: #8ea0ba;
-}
-
-
-.terminal-highlight {
-
-    color: var(--cyan);
-}
-
-
-.terminal-violet {
-
-    color: #a78bfa;
-}
-
-
-.terminal-success {
-
-    color: var(--green);
-}
-
+.terminal-command { color: #e2e8f0; }
+.terminal-output { color: #8293ac; }
+.terminal-highlight { color: #38bdf8; }
+.terminal-violet { color: #a78bfa; }
+.terminal-success { color: #34d399; }
 
 .terminal-cursor {
-
-    display: inline-block;
-
-    color: var(--cyan);
-
-    animation:
-        terminalBlink
-        0.8s
-        infinite;
-
-    margin-left: 2px;
+    position: absolute;
+    z-index: 4;
+    bottom: 18px;
+    left: 22px;
+    color: #38bdf8;
+    font-weight: 700;
+    animation: terminalBlink 0.75s infinite;
 }
 
-
 @keyframes terminalBlink {
-
-    0%,
-    45% {
-        opacity: 1;
-    }
-
-    46%,
-    100% {
-        opacity: 0;
-    }
+    0%, 45% { opacity: 1; }
+    46%, 100% { opacity: 0; }
 }
 
 
@@ -2857,46 +2823,20 @@ footer {
             <!-- TERMINAL -->
 
             <div class="about-terminal reveal delay2">
+    <div class="terminal-bar">
+        <span class="terminal-dot"></span>
+        <span class="terminal-dot"></span>
+        <span class="terminal-dot"></span>
+        <span class="terminal-title">ammar@cloud-platform:~</span>
+    </div>
 
-
-                <div class="terminal-bar">
-
-
-                    <span class="terminal-dot"></span>
-
-                    <span class="terminal-dot"></span>
-
-                    <span class="terminal-dot"></span>
-
-
-                    <span class="terminal-title">
-
-                        ammar@cloud-platform:~
-
-                    </span>
-
-
-                </div>
-
-
-                <div
-                    class="terminal-body"
-                    id="terminal">
-
-
-                    <span class="terminal-cursor">
-                        ▋
-                    </span>
-
-
-                </div>
-
-
-            </div>
-
+    <div class="terminal-body" id="terminal">
+        <div class="terminal-screen"></div>
+        <span class="terminal-cursor">▋</span>
+    </div>
+</div>
 
         </div>
-
 
         <!-- STATS -->
 
@@ -5196,617 +5136,125 @@ window.addEventListener(
 
 
 /* =========================================================
-   LIVE TERMINAL
+   LIVE TERMINAL — FIXED VIEWPORT
 ========================================================= */
 
-const terminal =
-    document.getElementById(
-        "terminal"
-    );
-
-
-/*
-    Every terminal command is
-    defined here.
-
-    The script types:
-        command
-        output
-
-    one character at a time.
-*/
+const terminalScreen = document.querySelector(".terminal-screen");
 
 const terminalSequences = [
-
     {
-
-        command:
-            "whoami",
-
+        command: "whoami",
         output: [
-
-            {
-
-                text:
-                    "cloud-devops-data-engineer",
-
-                className:
-                    "terminal-output"
-
-            }
-
+            { text: "cloud-devops-data-engineer", className: "terminal-output" }
         ]
-
     },
-
-
     {
-
-        command:
-            "focus --show",
-
+        command: "focus --show",
         output: [
-
-            {
-
-                text:
-                    "cloud infrastructure",
-
-                className:
-                    "terminal-highlight"
-
-            },
-
-            {
-
-                text:
-                    "platform engineering",
-
-                className:
-                    "terminal-highlight"
-
-            },
-
-            {
-
-                text:
-                    "devsecops automation",
-
-                className:
-                    "terminal-highlight"
-
-            },
-
-            {
-
-                text:
-                    "data engineering",
-
-                className:
-                    "terminal-highlight"
-
-            },
-
-            {
-
-                text:
-                    "ai infrastructure",
-
-                className:
-                    "terminal-highlight"
-
-            }
-
+            { text: "cloud infrastructure", className: "terminal-highlight" },
+            { text: "platform engineering", className: "terminal-highlight" },
+            { text: "devsecops automation", className: "terminal-highlight" },
+            { text: "data engineering", className: "terminal-highlight" },
+            { text: "ai infrastructure", className: "terminal-highlight" }
         ]
-
     },
-
-
     {
-
-        command:
-            "stack --primary",
-
+        command: "stack --primary",
         output: [
-
-            {
-
-                text:
-                    "Azure · Terraform · Kubernetes",
-
-                className:
-                    "terminal-violet"
-
-            },
-
-            {
-
-                text:
-                    "Databricks · Python · CI/CD",
-
-                className:
-                    "terminal-violet"
-
-            }
-
+            { text: "Azure · Terraform · Kubernetes", className: "terminal-violet" },
+            { text: "Databricks · Python · CI/CD", className: "terminal-violet" }
         ]
-
     },
-
-
     {
-
-        command:
-            "projects --show",
-
+        command: "impact --show",
         output: [
-
-            {
-
-                text:
-                    "[01] Azure DevOps Golden Templates",
-
-                className:
-                    "terminal-highlight"
-
-            },
-
-            {
-
-                text:
-                    "[02] Enterprise AI Platform",
-
-                className:
-                    "terminal-highlight"
-
-            },
-
-            {
-
-                text:
-                    "[03] OYO — 800+ Data Stores",
-
-                className:
-                    "terminal-highlight"
-
-            },
-
-            {
-
-                text:
-                    "[04] Josh — Petabyte-Scale Platform",
-
-                className:
-                    "terminal-highlight"
-
-            }
-
+            { text: "4+ years engineering", className: "terminal-output" },
+            { text: "800+ data stores migrated", className: "terminal-output" },
+            { text: "petabyte-scale data platform", className: "terminal-output" }
         ]
-
     },
-
-
     {
-
-        command:
-            "impact --show",
-
+        command: "status",
         output: [
-
-            {
-
-                text:
-                    "4+ years engineering",
-
-                className:
-                    "terminal-output"
-
-            },
-
-            {
-
-                text:
-                    "800+ data stores migrated",
-
-                className:
-                    "terminal-output"
-
-            },
-
-            {
-
-                text:
-                    "petabyte-scale data platform",
-
-                className:
-                    "terminal-output"
-
-            },
-
-            {
-
-                text:
-                    "~40% release cycle reduction",
-
-                className:
-                    "terminal-output"
-
-            }
-
+            { text: "● production mindset — active", className: "terminal-success" }
         ]
-
-    },
-
-
-    {
-
-        command:
-            "certifications --count",
-
-        output: [
-
-            {
-
-                text:
-                    "Microsoft Certified — 10 Azure credentials",
-
-                className:
-                    "terminal-violet"
-
-            },
-
-            {
-
-                text:
-                    "AZ-900 · DP-900 · SC-900 · DP-300",
-
-                className:
-                    "terminal-violet"
-
-            },
-
-            {
-
-                text:
-                    "DP-203 · DP-600 · DP-700 · AZ-104",
-
-                className:
-                    "terminal-violet"
-
-            },
-
-            {
-
-                text:
-                    "AZ-400 · AZ-305",
-
-                className:
-                    "terminal-violet"
-
-            }
-
-        ]
-
-    },
-
-
-    {
-
-        command:
-            "status",
-
-        output: [
-
-            {
-
-                text:
-                    "● production mindset — active",
-
-                className:
-                    "terminal-success"
-
-            }
-
-        ]
-
     }
-
 ];
 
+const TERMINAL_MAX_LINES = 12;
+const COMMAND_SPEED = 9;
+const OUTPUT_SPEED = 5;
+const COMMAND_PAUSE = 120;
+const OUTPUT_PAUSE = 45;
+const CYCLE_PAUSE = 700;
 
-/*
-    Typing speeds
-*/
-
-const typingSpeed = 7;
-
-const outputTypingSpeed = 4;
-
-const commandPause = 160;
-
-const outputPause = 60;
-
-const sequencePause = 900;
-
-
-/*
-    Sleep helper
-*/
-
-function sleep(milliseconds) {
-
-    return new Promise(
-        resolve =>
-            setTimeout(
-                resolve,
-                milliseconds
-            )
-    );
-
+function terminalSleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-
-/*
-    Type characters
-*/
-
-function typeText(element, text, speed) {
-
-    return new Promise(resolve => {
-
-        let index = 0;
-
-        function typeNext() {
-
-            if (index >= text.length) {
-                resolve();
-                return;
-            }
-
-            element.textContent += text[index];
-
-            index++;
-
-            setTimeout(
-                typeNext,
-                speed
-            );
-        }
-
-        typeNext();
-    });
-
-}
-
-
-/*
-    Type command
-*/
-
-async function typeCommand(
-    command
-) {
-
-    const line =
-        document.createElement(
-            "div"
-        );
-
-
-    line.className =
-        "terminal-line";
-
-
-    const prompt =
-        document.createElement(
-            "span"
-        );
-
-
-    prompt.className =
-        "terminal-prompt";
-
-
-    prompt.textContent =
-        "ammar@platform:~$ ";
-
-
-    line.appendChild(
-        prompt
-    );
-
-
-    const commandElement =
-        document.createElement(
-            "span"
-        );
-
-
-    commandElement.className =
-        "terminal-command";
-
-
-    line.appendChild(
-        commandElement
-    );
-
-
-    const cursor =
-        terminal.querySelector(
-            ".terminal-cursor"
-        );
-
-
-    terminal.insertBefore(
-        line,
-        cursor
-    );
-
-
-    await typeText(
-        commandElement,
-        command,
-        typingSpeed
-    );
-
-
-    await sleep(
-        commandPause
-    );
-
-}
-
-
-/*
-    Type output
-*/
-
-async function typeOutput(
-    output
-) {
-
-    const line =
-        document.createElement(
-            "div"
-        );
-
-
-    line.className =
-        "terminal-line";
-
-
-    const outputElement =
-        document.createElement(
-            "span"
-        );
-
-
-    outputElement.className =
-        output.className;
-
-
-    line.appendChild(
-        outputElement
-    );
-
-
-    const cursor =
-        terminal.querySelector(
-            ".terminal-cursor"
-        );
-
-
-    terminal.insertBefore(
-        line,
-        cursor
-    );
-
-
-    await typeText(
-        outputElement,
-        output.text,
-        outputTypingSpeed
-    );
-
-
-    await sleep(
-        outputPause
-    );
-
-}
-
-
-/*
-    Clear terminal
-    with a small fade.
-*/
-
-async function clearTerminal() {
-
-    const lines =
-        terminal.querySelectorAll(
-            ".terminal-line"
-        );
-
-
-    for (
-        let i =
-            lines.length - 1;
-        i >= 0;
-        i--
-    ) {
-
-        lines[i].style.opacity =
-            "0";
-
-
-        await sleep(
-            35
-        );
-
-
-        lines[i].remove();
-
+async function terminalType(element, text, speed) {
+    for (let i = 0; i < text.length; i++) {
+        element.textContent += text[i];
+        await terminalSleep(speed);
     }
-
 }
 
+function trimTerminal() {
+    while (terminalScreen.children.length > TERMINAL_MAX_LINES) {
+        terminalScreen.firstElementChild.remove();
+    }
+}
 
-/*
-    Run terminal forever.
-*/
+async function terminalCommand(command) {
+    const line = document.createElement("div");
+    line.className = "terminal-line";
+
+    const prompt = document.createElement("span");
+    prompt.className = "terminal-prompt";
+    prompt.textContent = "ammar@platform:~$ ";
+
+    const commandElement = document.createElement("span");
+    commandElement.className = "terminal-command";
+
+    line.appendChild(prompt);
+    line.appendChild(commandElement);
+    terminalScreen.appendChild(line);
+
+    trimTerminal();
+
+    await terminalType(commandElement, command, COMMAND_SPEED);
+    await terminalSleep(COMMAND_PAUSE);
+}
+
+async function terminalOutput(output) {
+    const line = document.createElement("div");
+    line.className = "terminal-line";
+
+    const element = document.createElement("span");
+    element.className = output.className;
+
+    line.appendChild(element);
+    terminalScreen.appendChild(line);
+
+    trimTerminal();
+
+    await terminalType(element, output.text, OUTPUT_SPEED);
+    await terminalSleep(OUTPUT_PAUSE);
+}
 
 async function runTerminal() {
-
     while (true) {
+        for (const sequence of terminalSequences) {
+            await terminalCommand(sequence.command);
 
-
-        for (
-            const sequence
-            of terminalSequences
-        ) {
-
-
-            await typeCommand(
-                sequence.command
-            );
-
-
-            for (
-                const output
-                of sequence.output
-            ) {
-
-                await typeOutput(
-                    output
-                );
-
+            for (const output of sequence.output) {
+                await terminalOutput(output);
             }
-
-
-            await sleep(
-                450
-            );
-
         }
 
-
-        await sleep(
-            sequencePause
-        );
-
-
-        await clearTerminal();
-
-
-        await sleep(
-            500
-        );
-
+        await terminalSleep(CYCLE_PAUSE);
     }
-
 }
-
 
 runTerminal();
 
